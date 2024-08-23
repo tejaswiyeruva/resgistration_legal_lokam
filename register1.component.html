@@ -1,0 +1,136 @@
+<div class="login-container">
+  <div class="login-form">
+      <div class="signup-container">
+          <h2 class="form-heading">Register</h2>
+          <div class="signin p-grid">
+              <form [formGroup]="loginForm">
+                  
+                  <!-- Name Fields -->
+                  <div class="p-grid">
+                      <div class="p-col-4">
+                          <input formControlName="fir.form-input stName" type="text" class="form-input" placeholder="First Name" required />
+                      </div>
+                      <div class="p-col-4">
+                          <input formControlName="middleName" type="text" class="form-input" placeholder="Middle Name" required />
+                      </div>
+                      <div class="p-col-4">
+                          <input formControlName="lastName" type="text" class="form-input" placeholder="Last Name" required />
+                      </div>
+                  </div>
+
+                  <!-- Email and Contact -->
+                  <div class="p-grid">
+                      <div class="p-col-6">
+                          <input formControlName="email" type="email" class="form-input" placeholder="Email" required />
+                      </div>
+                      <div class="p-col-6">
+                          <input formControlName="contactNo" type="tel" class="form-input" placeholder="Contact Number" required />
+                      </div>
+                  </div>
+
+                  <!-- Date of Birth and Age -->
+                  <div class="form-group date-age-fields p-grid">
+                      <div class="p-col">
+                          <input formControlName="dob" type="date" class="form-input" placeholder="YYYY-MM-DD" required />
+                      </div>
+                      <div class="p-col">
+                          <input formControlName="age" type="number" class="form-input" placeholder="Age" required />
+                      </div>
+                  </div>
+
+                  <!-- City, District, State -->
+                  <div class="form-group location-fields p-grid">
+                      <div class="p-col">
+                          <input formControlName="city" type="text" class="form-input" placeholder="City" required />
+                      </div>
+                      <div class="p-col">
+                          <input formControlName="district" type="text" class="form-input" placeholder="District" />
+                      </div>
+                      <div class="p-col">
+                          <input formControlName="state" type="text" class="form-input" placeholder="State" required />
+                      </div>
+                  </div>
+
+                  <!-- Role Selection -->
+                  <div class="form-group lawyer-fields p-grid">
+                      <div class="p-col-6">
+                          <label class="form-select-label">
+                              <select formControlName="role" (change)="onRoleChange($event)" class="form-select" style="width: 14rem;">
+                                  <option value="" disabled selected>Register As</option>
+                                  <option value="Lawyer">Lawyer</option>
+                                  <option value="Client">Client</option>
+                              </select>
+                          </label>
+                      </div>
+                      
+                      <!-- Gender -->
+                      <div class="p-col-6">
+                          <div class="form-group gender-role-fields">
+                              <fieldset class="form-fieldset">
+                                  <legend class="form-legend">Gender:</legend>
+                                  <div class="form-radio-group">
+                                      <div class="form-radio">
+                                          <input formControlName="gender" id="male" type="radio" value="male" class="form-radio-input" />
+                                          <label for="male" class="form-radio-label">Male</label>
+                                      </div>
+                                      <div class="form-radio">
+                                          <input formControlName="gender" id="female" type="radio" value="female" class="form-radio-input" />
+                                          <label for="female" class="form-radio-label">Female</label>
+                                      </div>
+                                      <div class="form-radio">
+                                          <input formControlName="gender" id="others" type="radio" value="others" class="form-radio-input" />
+                                          <label for="others" class="form-radio-label">Others</label>
+                                      </div>
+                                  </div>
+                              </fieldset>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Conditional Fields for Lawyer -->
+                  <div *ngIf="showLawyerFields" class="conditional-fields">
+                      <div class="form-group lawyer-fields">
+                          <input formControlName="college" type="text" class="form-input" placeholder="College" required />
+                          <input formControlName="degree" type="number" class="form-input" placeholder="Degree" required />
+                          <input formControlName="experience" type="number" class="form-input" placeholder="Experience" required />
+                          <input formControlName="casesDealt" type="number" class="form-input" placeholder="Cases Dealt" required />
+                      </div>
+
+                      <fieldset class="form-fieldset">
+                          <legend class="form-legend">Law Category</legend>
+                          <div class="form-radio-group">
+                              <div class="form-radio">
+                                  <input formControlName="lawCategory" id="civil" type="radio" value="Civil Law" class="form-radio-input" />
+                                  <label for="civil" class="form-radio-label">Civil Law</label>
+                              </div>
+                              <div class="form-radio">
+                                  <input formControlName="lawCategory" id="admn" type="radio" value="Administrative Law" class="form-radio-input" />
+                                  <label for="admn" class="form-radio-label">Administrative Law</label>
+                              </div>
+                          </div>
+                      </fieldset>
+                  </div>
+
+                  <!-- Conditional Fields for Client -->
+                  <div *ngIf="showClientFields" class="conditional-fields">
+                      <div class="form-group lawyer-fields">
+                          <input formControlName="occupation" type="text" class="form-input" placeholder="Occupation" required />
+                          <input formControlName="activeCases" type="number" class="form-input" placeholder="Cases Involved" required />
+                      </div>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <button type="submit" class="submit-button">
+                      Register
+                  </button>
+
+                  <!-- Login Prompt -->
+                  <p class="login-prompt">
+                      Already have an account? <a class="login-link" href="#">Login</a>
+                  </p>
+
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
